@@ -1,0 +1,12 @@
+{
+    "name": "lmclientx-ng",
+    "version": "0.0.1",
+    "description": "A moduled Learn Mode client built with HTML5, CSS3 and AngularJS, which focuses on performance and responsive design to provide good user experience.",
+    "dependencies": {
+        "express": "4.4.4",
+		"body-parser": "1.3.0",
+		"method-override": "2.0.2",
+        "http-proxy": "1.1.4",
+        "path": "0.4.9"
+    }
+}
