@@ -14,3 +14,95 @@ body {
 .navbar-brand {
 	color: #FFF !important;
 }
+
+.transition-all {
+	transition: all 250ms ease-out;
+}
+
+.post {
+	width: 100%;
+	border-bottom: 1px #e1e1e1 solid;
+	padding: 2px 0;
+	color: #555;
+	margin: 0;
+}
+
+.post-pointer {
+	cursor: pointer;
+}
+
+.post:hover {
+	background-color: rgba(230,242,250,.6);
+	outline: 0;
+}
+
+.post-content {
+	margin: 2px 0;
+	padding: 2px 20px;
+	font-size: 16px;
+	color: inherit;
+	border-left: 3px #FFF solid;
+	clear: both;
+	/*overflow: auto;*/
+	word-wrap:break-word;
+	overflow:hidden;
+}
+
+.post-content:hover {
+	border-left: 3px #b1d6f0 solid;
+}
+
+.post-avatar {
+	width: 55px;
+	box-shadow: 3px 3px 12px 2px rgba(20%,20%,40%,0.5);
+	float: left;
+}
+
+.post-avatar img {
+	width: 100%;
+}
+
+.post-info {
+	float: left;
+	margin-left: 15px;
+}
+
+.post-info strong {
+	font-size: 1.35em;
+	font-weight: 900;
+}
+
+.post-info .post-time {
+	font-size: .95em;
+	font-family: Consolas, Monaco,"文泉驛等寬微米黑", monospace;
+}
+
+.post-content p {
+	clear: both;
+}
+
+.post-highlight {
+	color: #1BA1E2;
+	font-size: 1.2em;
+}
+
+.post-badge {
+	width: 240px;
+}
+
+.post-main {
+	margin-top: 70px;
+	clear: both;
+	color: #000;
+}
+
+.post-image {
+	margin-top: 10px;
+	margin-bottom: 15px;
+	width: 200px;
+}
+
+.post-image img {
+	width: 200px;
+	box-shadow: 0 2px 6px rgba(0,0,0,.3),0 3px 8px rgba(0,0,0,.2);
+}

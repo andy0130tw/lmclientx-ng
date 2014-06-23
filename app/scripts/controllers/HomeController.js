@@ -1,4 +1,4 @@
-define(['app', 'services/PostService', 'services/HomePostStorage'], function(app){
+define(['app', 'services/PostService', 'services/HomePostStorage', 'directives/MarkupArea'], function(app){
     app.controller('HomeController', function($scope, PostService, HomePostStorage){
         $scope.posts = [];
         $scope.users = {};
