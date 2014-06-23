@@ -14,6 +14,7 @@ define(['app', 'ngstorage', 'services/UserService'], function(app){
                 if($localStorage.mac === undefined) return;
                 var Session = this;
                 this.mac = $localStorage.mac;
+                console.log('restoring ' + this.mac);
                 this.readOwnProfile().then(function(resp){
                     Session.user = resp.data.profile;
                     $rootScope.$broadcast('AUTH_STATE_CHANGED');
@@ -43,6 +44,14 @@ define(['app', 'ngstorage', 'services/UserService'], function(app){
             
             readOwnProfile: function(){
                 return $http.get('/api/profile/read?device=' + this.mac);
+            },
+            
+            appendDevice: function(options){
+                var output = {device: this.mac};
+                for(var key in options){
+                    output[key] = options[key];
+                }
+                return output;
             }
             
         };

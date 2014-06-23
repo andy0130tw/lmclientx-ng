@@ -1,1 +1,5 @@
-<div ng-init="init()"><p>home view</p></div>
+<div ng-init="init()">
+    <div ng-repeat="post in posts">
+        <p>{{ users[post.from].name }}：{{ post.message }}</p>
+    </div>
+</div>

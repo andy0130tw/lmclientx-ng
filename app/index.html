@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="/styles/font.css">
         <title>LmClientX</title>
     </head>
-    <body ng-controller="ApplicationController" role="document">
+    <body ng-controller="ApplicationController" ng-init="init()" role="document">
 		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
@@ -42,7 +42,7 @@
 				</div><!--/.nav-collapse -->
 			</div>
 		</div>
-		<div class="container" role="main" id="main" ng-view>
+		<div class="container" role="main" id="main" ui-view>
 			
 		</div>
         <script type="text/javascript" src="/bower_components/requirejs/require.js" data-main="/scripts/startup.js"></script>

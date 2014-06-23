@@ -1,12 +1,14 @@
 define([], function(){
     return {
-        defaultRoutePath: '/',
+        defaultRoutePath: 'home',
         routes: {
-            '/': {
+            'home': {
+                url: '/home',
                 templateUrl: '/views/home.html',
                 controller: 'HomeController'
             },
-            '/login': {
+            'login': {
+                url: '/login',
                 templateUrl: '/views/login.html',
                 controller: 'LoginController'
             }

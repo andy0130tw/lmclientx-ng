@@ -1,5 +1,5 @@
 define(['app', 'services/Session'], function(app){
-    app.controller('ApplicationController', function($scope, $location, Session, $location){
+    app.controller('ApplicationController', function($scope, $location, Session, $state){
         $scope.currentUser = null;
         
         $scope.$on('AUTH_STATE_CHANGED', function(event, args){
@@ -7,13 +7,13 @@ define(['app', 'services/Session'], function(app){
         });
         
         $scope.init = function(){
-            if(!Session.checkStorage()) $location.path('/login');
+            if(!Session.checkStorage()) $state.go('login');
             else Session.restoreSession();
         };
         
         $scope.logout = function(){
             Session.destroySession();
-            $location.path('/home');
+            $state.go('login', {reload: true});
         };
     });
 });
