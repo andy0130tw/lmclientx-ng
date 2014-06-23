@@ -10,7 +10,7 @@
                     <span ng-if="post.category === 'answer'"> 回答了 <strong ng-if="post.reluser !== '他自己'">{{ post.reluser }}</strong><span ng-if="post.reluser === '他自己'">他自己</span> 的 <span class="post-highlight">問題</span>。</span>
                     <span ng-if="post.category === 'share'"> 提出了一個問題。</span>
                 </p>
-                <p class="post-time">{{ post.date }}</p>
+                <p class="post-time" am-time-ago="post.date"></p>
             </div>
             <div class="post-main" lm-markup ng-model="post.message"></div>
         </div>

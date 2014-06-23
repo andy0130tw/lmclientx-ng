@@ -6,9 +6,10 @@ define(['app', 'services/Session'], function(app){
             $scope.currentUser = Session.user;
         });
         
-        $scope.init = function(){
+        $scope.init = function(amMoment){
             if(!Session.checkStorage()) $state.go('login');
             else Session.restoreSession();
+            amMoment.changeLanguage('zh-tw');
         };
         
         $scope.logout = function(){

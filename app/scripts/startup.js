@@ -1,7 +1,9 @@
 require.config({
     baseUrl: '/scripts',
     paths: {
+        'moment': '/bower_components/moment/min/moment-with-langs.min',
         'angular': '/bower_components/angular/angular',
+        'angular-moment': '/bower_components/angular-moment/angular-moment.min',
         'angular-animate': '/bower_components/angular-animate/angular-animate.min',
         'angular-ui-router': '/bower_components/angular-ui-router/release/angular-ui-router',
         'angular-loading-bar': '/bower_components/angular-loading-bar/build/loading-bar.min',
@@ -12,6 +14,9 @@ require.config({
     shim: {
         'app': {
             deps: ['angular', 'angular-ui-router', 'bootstrap']
+        },
+        'angular-moment': {
+            deps: ['angular', 'moment']
         },
         'angular-ui-router': {
             deps: ['angular']
