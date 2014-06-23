@@ -67,6 +67,11 @@ body {
 	margin-left: 15px;
 }
 
+.post-highlight {
+	color: #1BA1E2;
+	font-size: 1.2em;
+}
+
 .post-info strong {
 	font-size: 1.35em;
 	font-weight: 900;

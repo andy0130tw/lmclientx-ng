@@ -7,6 +7,12 @@ define(['app'], function(app){
             user: {},
             
             appendPost: function(arr){
+                // Process related user's name
+                for(var p in arr){
+                    if(arr[p].category === 'comment' || arr[p].category === 'answer'){
+                        arr[p].reluser = this.user[this.related[arr[p].related].from].name;
+                    }
+                }
                 this.post.push.apply(this.post, arr);
                 $rootScope.$broadcast('HOME_POST_CHANGED');
             },
@@ -20,6 +26,7 @@ define(['app'], function(app){
             
             updateUser: function(obj){
                 for(var key in obj){
+                    obj[key].avatar = 'https://apollo.omcompany.com:5443/image/' + obj[key].image;
                     this.user[key] = obj[key];
                 }
                 $rootScope.$broadcast('HOME_USER_CHANGED');

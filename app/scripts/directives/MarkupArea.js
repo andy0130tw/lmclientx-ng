@@ -1,7 +1,5 @@
 define(['app'], function(app){
-    console.log('ab');
     app.directive('lmMarkup', function(){
-        console.log('aaa');
         return {
             restrict: 'A',
             require: 'ngModel',
