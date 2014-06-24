@@ -18,6 +18,7 @@ define(['app'], function(app){
             src = src.replace(/</g, '&lt;');
             src = src.replace(/>/g, '&gt;');
             src = src.replace(/([^>])\n/g, '$1<br/>\n');
+            src = src.replace(/\*\*\s*(.+?)\s*\*\*/g, '<strong>$1</strong>');
             src = src.replace(/--\s*(.+?)\s*--/g, '<del>$1</del>');
             src = src.replace(/__\s*(.+?)\s*__/g, '<u>$1</u>');
 
