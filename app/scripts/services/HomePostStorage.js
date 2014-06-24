@@ -5,6 +5,7 @@ define(['app'], function(app){
             post: [],
             related: {},
             user: {},
+            oldest: '',
             
             appendPost: function(arr){
                 // Process related user's name
@@ -12,9 +13,11 @@ define(['app'], function(app){
                     if(arr[p].category === 'comment' || arr[p].category === 'answer'){
                         arr[p].reluser = this.user[this.related[arr[p].related].from].name;
                     }
+                    this.related[arr[p].id] = arr[p];
                 }
                 this.post.push.apply(this.post, arr);
                 $rootScope.$broadcast('HOME_POST_CHANGED');
+                $rootScope.$broadcast('HOME_RELATED_CHANGED');
             },
             
             appendRelated: function(obj){

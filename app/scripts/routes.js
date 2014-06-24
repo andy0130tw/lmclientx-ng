@@ -11,6 +11,11 @@ define([], function(){
                 url: '/login',
                 templateUrl: '/views/login.html',
                 controller: 'LoginController'
+            },
+            'post': {
+                url: '/post/read/:postId',
+                templateUrl: '/views/post.read.html',
+                controller: 'PostReadController'
             }
         }
     };

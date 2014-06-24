@@ -1,0 +1,14 @@
+<div ng-init="init()">
+    <div class="post transition-all">
+        <div class="post-content transition-all" ng-click="read(post.id)">
+            <div class="post-avatar"><img ng-src="{{ users[post.from].avatar }}" /></div>
+            <div class="post-info">
+                <p>
+                    <strong>{{ users[post.from].name }}</strong>
+                </p>
+                <p class="post-time" am-time-ago="post.date"></p>
+            </div>
+            <div class="post-main" lm-markup ng-bind-html="post.message | markup | autolink"></div>
+        </div>
+    </div>
+</div>
