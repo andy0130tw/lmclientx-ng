@@ -1,6 +1,6 @@
-define(['routes', 'services/dependencyResolverFor', 'ngstorage', 'angular-loading-bar', 'angular-animate', 'angular-moment'], function(config, dependencyResolverFor){
+define(['routes', 'services/dependencyResolverFor', 'ngstorage', 'angular-loading-bar', 'angular-animate', 'angular-moment', 'angular-sanitize'], function(config, dependencyResolverFor){
     
-    var app = angular.module('app', ['ui.router', 'ngStorage', 'angular-loading-bar', 'ngAnimate', 'angularMoment']);
+    var app = angular.module('app', ['ui.router', 'ngStorage', 'angular-loading-bar', 'ngAnimate', 'angularMoment', 'ngSanitize']);
     
     app.config(
         function($urlRouterProvider, $stateProvider, $controllerProvider, $compileProvider, $filterProvider, $provide){

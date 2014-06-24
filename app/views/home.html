@@ -12,7 +12,7 @@
                 </p>
                 <p class="post-time" am-time-ago="post.date"></p>
             </div>
-            <div class="post-main" lm-markup ng-model="post.message"></div>
+            <div class="post-main" lm-markup ng-bind-html="post.message | markup"></div>
         </div>
     </div>
 </div>
