@@ -9,6 +9,10 @@ define(['app', 'services/PostService', 'services/HomePostStorage', 'filters/Mark
             if(HomePostStorage.post.length === 0){
                 // No data exists, download latest posts
                 PostService.listPost({ count: 25 }).then(function(resp){
+                    if(resp.data.status !== 'ok'){
+                        $state.go('login');
+                        return;
+                    }
                     var list = resp.data.list,
                         related = resp.data.related,
                         user = resp.data.users,

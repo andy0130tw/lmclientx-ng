@@ -7,7 +7,7 @@ define(['app', 'services/Session'], function(app){
         });
         
         $scope.init = function(){
-            if(!Session.checkStorage()) $state.go('login');
+            if(!Session.checkStorage()) $state.go('login', {reload: true});
             else Session.restoreSession();
             amMoment.changeLanguage('zh-tw');
         };
