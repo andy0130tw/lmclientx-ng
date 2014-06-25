@@ -20,4 +20,13 @@ app.get('/*', function(req, res){
     res.sendfile(path.join(__dirname, 'app', 'index.html'));
 });
 
+app.use(function (error, req, res, next) {
+    if(!error){
+        next();
+    } else {
+        console.error(error.stack);
+        res.send(500);
+    }
+});
+
 app.listen(8000);
