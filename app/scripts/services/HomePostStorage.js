@@ -5,7 +5,13 @@ define(['app'], function(app){
             post: [],
             related: {},
             user: {},
+            reply: [],
             oldest: '',
+            
+            clearReply: function(){
+                this.reply = [];
+                $rootScope.$broadcast('HOME_REPLY_CHANGED');
+            },
             
             appendPost: function(arr){
                 // Process related user's name
@@ -18,6 +24,11 @@ define(['app'], function(app){
                 this.post.push.apply(this.post, arr);
                 $rootScope.$broadcast('HOME_POST_CHANGED');
                 $rootScope.$broadcast('HOME_RELATED_CHANGED');
+            },
+            
+            appendReply: function(arr){
+                this.reply.push.apply(this.reply, arr);
+                $rootScope.$broadcast('HOME_REPLY_CHANGED');
             },
             
             appendRelated: function(obj){

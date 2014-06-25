@@ -53,7 +53,7 @@ define(['app', 'services/PostService', 'services/HomePostStorage', 'filters/Mark
         $scope.read = function(id){
             var post = $scope.related[id];
             if(post.category === 'scrapbook' || post.category === 'question' || post.category === 'answer') $state.go('post', { postId: id });
-            else if(post.category === 'comment' || post.category === 'answer') $state.go('post', { postId: post.related });
+            else if(post.category === 'comment' || post.category === 'answer' || post.category === '!emotion') $state.go('post', { postId: post.related });
         };
         
         $scope.$on('HOME_POST_CHANGED', function(){

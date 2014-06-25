@@ -3,6 +3,8 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var httpProxy = require('http-proxy');
+var domain = require('domain');
+var http = require('http');
 
 var app = express();
 var api = httpProxy.createProxyServer();
@@ -29,4 +31,16 @@ app.use(function (error, req, res, next) {
     }
 });
 
-app.listen(8000);
+var serverDomain = domain.create();
+
+serverDomain.run(function(){
+    http.createServer(function(req, res){
+        var reqd = domain.create();
+        reqd.add(req);
+        reqd.add(res);
+
+        reqd.on('error', function(error){ reqd.dispose(); });
+
+        app(req, res);
+    }).listen(8000);
+});
