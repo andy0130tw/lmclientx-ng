@@ -21,7 +21,7 @@
             <div class="post-main" ng-if="post.category === 'share' || post.category === 'scrapbook' || post.category === 'comment' || post.category === 'question' || post.category === 'answer'" lm-markup ng-bind-html="post.message | markup | autolink"></div>
         </div>
     </div>
-    <div style="text-align: center; padding-top: 10px;">
+    <div ng-if="more" style="text-align: center; padding-top: 10px;">
         <button class="btn btn-info btn-lg" ng-click="more()">載入更多</button>
     </div>
 </div>

@@ -4,6 +4,7 @@ define(['app', 'services/PostService', 'services/HomePostStorage', 'filters/Mark
         $scope.users = {};
         $scope.related = {};
         $scope.oldest = '';
+	$scope.more = false;
         
         $scope.init = function(){
             if(HomePostStorage.post.length === 0){
@@ -16,6 +17,7 @@ define(['app', 'services/PostService', 'services/HomePostStorage', 'filters/Mark
                     var list = resp.data.list,
                         related = resp.data.related,
                         user = resp.data.users,
+			more = resp.data.info.more;
                         oldest = resp.data.info.oldest;
 
                     HomePostStorage.oldest = oldest;
@@ -24,6 +26,7 @@ define(['app', 'services/PostService', 'services/HomePostStorage', 'filters/Mark
                     HomePostStorage.appendPost(list);
                     
                     $scope.oldest = oldest;
+		    $scope.more = more;
                 });
             } else {
                 // Restore data from HomePostStorage
