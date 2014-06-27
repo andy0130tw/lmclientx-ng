@@ -9,6 +9,13 @@
         <link rel="stylesheet" href="/styles/loading.css">
         <link rel="stylesheet" href="/styles/style.css">
         <link rel="stylesheet" href="/styles/font.css">
+        
+        <% styles.forEach( function ( file ) { %>
+        <link rel="stylesheet" href="<%= file %>"><% }); %>
+
+        <% scripts.forEach( function ( file ) { %>
+        <script type="text/javascript" src="<%= file %>"></script><% }); %>
+            
         <title>LmClientX</title>
     </head>
     <body ng-controller="ApplicationController" ng-init="init()" role="document">
