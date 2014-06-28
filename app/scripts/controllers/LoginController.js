@@ -1,12 +1,5 @@
 angular.module('app.LoginController', ['app.UserService', 'app.Session', 'ui.router'])
 
-.config(function($stateProvider){
-    $stateProvider.state('login', {
-        url: '/login',
-        controller: 'LoginController',
-        templateUrl: 'app/views/login.html'
-    });
-})
 .controller('LoginController', function($scope, UserService, Session, $state){
 
     $scope.message = '';

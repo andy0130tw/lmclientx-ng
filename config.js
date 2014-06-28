@@ -9,7 +9,6 @@ module.exports = {
     
     vendor_files: {
         js : [
-            'bower_components/jquery/dist/jquery.js',
             'bower_components/moment/min/moment-with-langs.js',
             'bower_components/angular/angular.js',
             'bower_components/angular-animate/angular-animate.js',
@@ -18,7 +17,7 @@ module.exports = {
             'bower_components/angular-sanitize/angular-sanitize.js',
             'bower_components/angular-ui-router/release/angular-ui-router.js',
             'bower_components/ngstorage/ngStorage.js',
-            'bower_components/bootstrap/dist/js/bootstrap.js'
+            'bower_components/angular-bootstrap/ui-bootstrap-tpls.js'
         ],
         css: [
             'bower_components/bootstrap/dist/css/bootstrap.css',

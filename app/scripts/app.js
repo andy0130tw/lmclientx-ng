@@ -1,5 +1,6 @@
 var app = angular.module('app', [
     'ui.router',
+    'ui.bootstrap',
     'ngStorage',
     'angular-loading-bar',
     'ngAnimate',
@@ -8,11 +9,37 @@ var app = angular.module('app', [
     'app.Session',
     'app.HomeController',
     'app.LoginController',
+    'app.PostListController',
     'app.PostReadController'
 ]);
 
 app.config(function($urlRouterProvider, $stateProvider){
     $urlRouterProvider.otherwise('/home');
+    
+    $stateProvider
+    .state('login', {
+        url: '/login',
+        controller: 'LoginController',
+        templateUrl: 'app/views/login.html'
+    })
+    
+    .state('post', {
+        url: '/post',
+        abstract: true,
+        templateUrl: 'app/views/post.html',
+    })
+    
+    .state('post.list', {
+        url: '',
+        controller: 'PostListController',
+        templateUrl: 'app/views/post.list.html'
+    })
+    
+    .state('post.read', {
+        url: '/:postId',
+        controller: 'PostReadController',
+        templateUrl: 'app/views/post.read.html'
+    });
 })
 
 .run(function(){})

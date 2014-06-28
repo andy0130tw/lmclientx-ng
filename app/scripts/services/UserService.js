@@ -10,6 +10,13 @@ angular.module('app.UserService', [])
             });
 
             return promise;
+        },
+        
+        procUserImage: function(users){
+            for(var key in users){
+                users[key].avatar = 'https://apollo.omcompany.com:5443/image/' + users[key].image;
+            }
+            return users;
         }
 
     };

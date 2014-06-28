@@ -1,0 +1,86 @@
+<div ng-init="init()">
+    <div class="post post-pointer transition-all" ng-repeat="post in posts">
+        <div class="post-content transition-all" ng-click="read(post.id)" ng-if="post.category === 'share'">
+            <div class="post-avatar"><img ng-src="{{ users[post.from].avatar }}" /></div>
+            <div class="post-info">
+                <p><strong>{{ users[post.from].name }}</strong> 分享了一篇貼文。</p>
+                <p class="post-time" am-time-ago="post.date"></p>
+            </div>
+            <div class="post-main" ng-bind-html="post.message | markup | autolink"></div>
+            <div class="post-image" ng-if="post.image !== ''">
+                <img lm-image="{{ post.image }}" />
+            </div>
+        </div>
+        <div class="post-content transition-all" ng-click="read(post.id)" ng-if="post.category === 'scrapbook'">
+            <div class="post-avatar"><img ng-src="{{ users[post.from].avatar }}" /></div>
+            <div class="post-info">
+                <p><strong>{{ users[post.from].name }}</strong> 在剪貼簿上新增了一篇貼文。</p>
+                <p class="post-time" am-time-ago="post.date"></p>
+            </div>
+            <div class="post-main" ng-bind-html="post.message | markup | autolink"></div>
+            <div class="post-image">
+                <img lm-image="{{ post.image }}" />
+            </div>
+        </div>
+        <div class="post-content transition-all" ng-click="read(post.id)" ng-if="post.category === 'question'">
+            <div class="post-avatar"><img ng-src="{{ users[post.from].avatar }}" /></div>
+            <div class="post-info">
+                <p><strong>{{ users[post.from].name }}</strong> 提出了一個問題。</p>
+                <p class="post-time" am-time-ago="post.date"></p>
+            </div>
+            <div class="post-main" ng-bind-html="post.message | markup | autolink"></div>
+            <div class="post-image" ng-if="post.image !== ''">
+                <img lm-image="{{ post.image }}" />
+            </div>
+        </div>
+        <div class="post-content transition-all" ng-click="read(post.related)" ng-if="post.category === 'comment'">
+            <div class="post-avatar"><img ng-src="{{ users[post.from].avatar }}" /></div>
+            <div class="post-info">
+                <p><strong>{{ users[post.from].name }}</strong> 回應了 <strong ng-if="post.reluser !== '他自己'">{{ post.reluser }}</strong><span ng-if="post.reluser === '他自己'">他自己</span> 的 <span class="post-highlight">貼文。</span></p>
+                <p class="post-time" am-time-ago="post.date"></p>
+            </div>
+            <div class="post-main" ng-bind-html="post.message | markup | autolink"></div>
+            <div class="post-image" ng-if="post.image !== ''">
+                <img lm-image="{{ post.image }}" />
+            </div>
+        </div>
+        <div class="post-content transition-all" ng-click="read(post.related)" ng-if="post.category === 'answer'">
+            <div class="post-avatar"><img ng-src="{{ users[post.from].avatar }}" /></div>
+            <div class="post-info">
+                <p><strong>{{ users[post.from].name }}</strong> 回應了 <strong ng-if="post.reluser !== '他自己'">{{ post.reluser }}</strong><span ng-if="post.reluser === '他自己'">他自己</span> 的 <span class="post-highlight">貼文。</span></p>
+                <p class="post-time" am-time-ago="post.date"></p>
+            </div>
+            <div class="post-main" ng-bind-html="post.message | markup | autolink"></div>
+            <div class="post-image" ng-if="post.image !== ''">
+                <img lm-image="{{ post.image }}" />
+            </div>
+        </div>
+        <div class="post-content transition-all" ng-if="post.category === 'course' || post.category === 'practice'">
+            <div class="post-avatar"><img ng-src="{{ users[post.from].avatar }}" /></div>
+            <div class="post-info">
+                <p><strong>{{ users[post.from].name }}</strong> {{ message }}</p>
+                <p class="post-time" am-time-ago="post.date"></p>
+            </div>
+            <div class="post-image" ng-if="post.image !== ''">
+                <img lm-image="{{ post.image }}" />
+            </div>
+        </div>
+        <div class="post-content transition-all" ng-if="post.category === '!follow'">
+            <div class="post-avatar"><img ng-src="{{ users[post.from].avatar }}" /></div>
+            <div class="post-info">
+                <p><strong>{{ users[post.from].name }}</strong> 正在<span class="post-highlight">關注</span>你。</p>
+                <p class="post-time" am-time-ago="post.date"></p>
+            </div>
+        </div>
+        <div class="post-content transition-all" ng-if="post.category === '!emotion'">
+            <div class="post-avatar"><img ng-src="{{ users[post.from].avatar }}" /></div>
+            <div class="post-info">
+                <p><strong>{{ users[post.from].name }}</strong> 對你的貼文的表情是 <span class="post-highlight">{{ message }}</span>！</p>
+                <p class="post-time" am-time-ago="post.date"></p>
+            </div>
+        </div>
+    </div>
+    <div ng-if="moreToLoad" style="text-align: center; padding-top: 10px;">
+        <button class="btn btn-info btn-lg" ng-click="more()">載入更多</button>
+    </div>
+</div>
