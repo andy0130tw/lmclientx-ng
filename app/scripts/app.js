@@ -30,7 +30,7 @@ app.config(function($urlRouterProvider, $stateProvider){
     })
     
     .state('post.list', {
-        url: '',
+        url: '?before&after',
         controller: 'PostListController',
         templateUrl: 'app/views/post.list.html'
     })
