@@ -27,6 +27,16 @@ module.exports = function(grunt){
                     }
                 ]
             },
+            build_app_tpl: {
+                files: [
+                    {
+                        src: [ '<%= app_files.tpl %>' ],
+                        dest: '<%= build_dir %>/',
+                        cwd: '.',
+                        expand: true
+                    }
+                ]
+            },
             build_vendor_js: {
                 files: [
                     {
@@ -41,7 +51,7 @@ module.exports = function(grunt){
         
         concat: {
             build_css: {
-                src: [ '<%= vendor_files.css %>' ],
+                src: [ '<%= vendor_files.css %>', '<%= app_files.css %>' ],
                 dest: '<%= build_dir %>/<%= pkg.name %>-<%= pkg.version %>.css'
             }
         },
@@ -56,57 +66,41 @@ module.exports = function(grunt){
                     '<%= build_dir %>/<%= pkg.name %>-<%= pkg.version %>.css'
                 ]
             }
+        },
+        
+        watch: {
+            files: [ 'app/**/*' ],
+            tasks: [ 'build' ]
         }
     };
     
     grunt.initConfig(grunt.util._.extend(init, config));
     
-    grunt.registerTask('build', ['clean', 'copy:build_app_js', 'copy:build_vendor_js', 'concat:build_css', 'index:build']);
+    grunt.registerTask('build', ['clean', 'copy:build_app_js', 'copy:build_vendor_js', 'copy:build_app_tpl', 'concat:build_css', 'index:build']);
     
-      /**
-   * A utility function to get all app JavaScript sources.
-   */
-  function filterForJS ( files ) {
-    return files.filter( function ( file ) {
-      return file.match( /\.js$/ );
-    });
-  }
-
-  /**
-   * A utility function to get all app CSS sources.
-   */
-  function filterForCSS ( files ) {
-    return files.filter( function ( file ) {
-      return file.match( /\.css$/ );
-    });
-  }
-
-  /** 
-   * The index.html template includes the stylesheet and javascript sources
-   * based on dynamic names calculated in this Gruntfile. This task assembles
-   * the list into variables for the template to use and then runs the
-   * compilation.
-   */
-  grunt.registerMultiTask( 'index', 'Process index.html template', function () {
-    var dirRE = new RegExp( '^('+grunt.config('build_dir')+'|'+grunt.config('compile_dir')+')\/', 'g' );
-    var jsFiles = filterForJS( this.filesSrc ).map( function ( file ) {
-      return file.replace( dirRE, '' );
-    });
-    var cssFiles = filterForCSS( this.filesSrc ).map( function ( file ) {
-      return file.replace( dirRE, '' );
-    });
-
-    grunt.file.copy('app/index.html', this.data.dir + '/index.html', { 
-      process: function ( contents, path ) {
-        return grunt.template.process( contents, {
-          data: {
-            scripts: jsFiles,
-            styles: cssFiles,
-            version: grunt.config( 'pkg.version' )
-          }
+    function filterCss(files){
+        return files.filter(function(file){
+            return file.match(/\.css$/) && (file.substring(0, 6) === 'build/');
         });
-      }
+    }
+    
+    grunt.registerMultiTask( 'index', 'Process index.html template', function () {
+        var jsFiles = grunt.config('vendor_files.js');
+        jsFiles = jsFiles.concat(grunt.file.expand(grunt.config('app_files.js')));
+        var cssFiles = filterCss(this.filesSrc).map(function(file){
+            return file.replace('build/', '');
+        });
+        grunt.file.copy('app/index.html', this.data.dir + '/index.html', {
+            process: function(contents, path){
+                return grunt.template.process(contents, {
+                    data: {
+                        scripts: jsFiles,
+                        styles: cssFiles,
+                        version: grunt.config('pkg.version')
+                    }
+                });
+            }
+        });
     });
-  });
     
 };

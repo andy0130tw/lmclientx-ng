@@ -11,8 +11,8 @@ var api = httpProxy.createProxyServer();
 
 app.use(bodyParser());
 app.use(methodOverride());
-app.use(express.static(path.join(__dirname, 'app')));
-app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
+app.use(express.static(path.join(__dirname, 'build')));
+//app.use('/bower_components', express.static(path.join(__dirname, 'build', 'bower_components')));
 
 app.get('/api/*', function(req, res){
     api.web(req, res, { target: 'https://apollo.omcompany.com:5443' });

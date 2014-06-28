@@ -9,6 +9,9 @@
                 <p class="post-time" am-time-ago="post.date"></p>
             </div>
             <div class="post-main" ng-bind-html="post.message | markup | autolink"></div>
+            <div class="post-image" ng-if="post.image !== ''">
+                <img lm-image="{{ post.image }}" />
+            </div>
         </div>
     </div>
     <div class="post transition-all" ng-repeat="reply in replies">
@@ -21,6 +24,10 @@
                 <p class="post-time" am-time-ago="reply.date"></p>
             </div>
             <div class="post-main" lm-markup ng-bind-html="reply.message | markup | autolink"></div>
+            <div class="post-image" ng-if="reply.image !== ''">
+                <img lm-image="{{ reply.image }}" />
+            </div>
         </div>
     </div>
+    <button class="btn btn-primary" ng-click="back()">返回</button>
 </div>

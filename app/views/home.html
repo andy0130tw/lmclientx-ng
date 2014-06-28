@@ -18,7 +18,10 @@
                 </p>
                 <p class="post-time" am-time-ago="post.date"></p>
             </div>
-            <div class="post-main" ng-if="post.category === 'share' || post.category === 'scrapbook' || post.category === 'comment' || post.category === 'question' || post.category === 'answer'" lm-markup ng-bind-html="post.message | markup | autolink"></div>
+            <div class="post-main" ng-if="post.category === 'share' || post.category === 'scrapbook' || post.category === 'comment' || post.category === 'question' || post.category === 'answer'" ng-bind-html="post.message | markup | autolink"></div>
+            <div class="post-image" ng-if="post.image !== ''">
+                <img lm-image="{{ post.image }}" />
+            </div>
         </div>
     </div>
     <div ng-if="moreToLoad" style="text-align: center; padding-top: 10px;">

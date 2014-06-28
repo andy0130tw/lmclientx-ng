@@ -1,32 +1,37 @@
-define(['routes', 'services/dependencyResolverFor', 'ngstorage', 'angular-loading-bar', 'angular-animate', 'angular-moment', 'angular-sanitize'], function(config, dependencyResolverFor){
-    
-    var app = angular.module('app', ['ui.router', 'ngStorage', 'angular-loading-bar', 'ngAnimate', 'angularMoment', 'ngSanitize']);
-    
-    app.config(
-        function($urlRouterProvider, $stateProvider, $controllerProvider, $compileProvider, $filterProvider, $provide){
-            app.controller = $controllerProvider.register;
-            app.directive = $compileProvider.directive;
-            app.filter = $filterProvider.register;
-            app.factory = $provide.factory;
-            app.service = $provide.service;
-            
-            if(config.routes !== undefined){
-                angular.forEach(config.routes, function(route, path){
-                    $stateProvider.state(path, {
-                        url: route.url,
-                        templateUrl: route.templateUrl,
-                        controller: route.controller,
-                        resolve: dependencyResolverFor(['controllers/' + route.controller])
-                    });
-                });
-            }
-            
-            if(config.defaultRoutePath !== undefined){
-                $urlRouterProvider.otherwise(config.defaultRoutePath);   
-            }
-        }
-    );
-    
-    return app;
-    
+var app = angular.module('app', [
+    'ui.router',
+    'ngStorage',
+    'angular-loading-bar',
+    'ngAnimate',
+    'angularMoment',
+    'ngSanitize',
+    'app.Session',
+    'app.HomeController',
+    'app.LoginController',
+    'app.PostReadController'
+]);
+
+app.config(function($urlRouterProvider, $stateProvider){
+    $urlRouterProvider.otherwise('/home');
+})
+
+.run(function(){})
+
+.controller('ApplicationController', function($scope, $location, Session, $state, amMoment){
+    $scope.currentUser = null;
+
+    $scope.$on('AUTH_STATE_CHANGED', function(event, args){
+        $scope.currentUser = Session.user;
+    });
+
+    $scope.init = function(){
+        if(!Session.checkStorage()) $state.go('login', {reload: true});
+        else Session.restoreSession();
+        amMoment.changeLanguage('zh-tw');
+    };
+
+    $scope.logout = function(){
+        Session.destroySession();
+        $state.go('login', {reload: true});
+    };
 });
