@@ -1,4 +1,12 @@
 <div ng-init="init()">
+    <ul class="pager" style="margin: 0 auto; padding-top: 10px;">
+        <li class="previous" ng-if="hasPrevious">
+            <a href ng-click="previous()">&laquo; 上一頁</a>
+        </li>
+        <li class="next" ng-if="moreToLoad">
+            <a href ng-click="more()">下一頁 &raquo;</a>
+        </li>
+    </ul>
     <div class="post post-pointer transition-all" ng-repeat="post in posts">
         <div class="post-content transition-all" ng-click="read(post.id)" ng-if="post.category === 'share'">
             <div class="post-avatar"><img ng-src="{{ users[post.from].avatar }}" /></div>
@@ -80,7 +88,12 @@
             </div>
         </div>
     </div>
-    <div ng-if="moreToLoad" style="text-align: center; padding-top: 10px;">
-        <button class="btn btn-info btn-lg" ng-click="more()">載入更多</button>
-    </div>
+    <ul class="pager" style="margin: 0 auto; padding-top: 10px;">
+        <li class="previous" ng-if="hasPrevious">
+            <a href ng-click="previous()">&laquo; 上一頁</a>
+        </li>
+        <li class="next" ng-if="moreToLoad">
+            <a href ng-click="more()">下一頁 &raquo;</a>
+        </li>
+    </ul>
 </div>

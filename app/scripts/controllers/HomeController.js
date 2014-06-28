@@ -1,4 +1,4 @@
-angular.module('app.HomeController', ['app.PostService', 'app.HomePostStorage', 'ui.router', 'app.MarkupArea', 'app.ImageSizes'])
+angular.module('app.HomeController', ['app.PostService', 'app.HomePostStorage', 'ui.router', 'app.MarkupArea', 'app.ImageSizes', 'app.PageState'])
 .config(function($stateProvider){
     $stateProvider.state('home', {
         url: '/home',
@@ -7,8 +7,9 @@ angular.module('app.HomeController', ['app.PostService', 'app.HomePostStorage', 
     });
 })
 
-.controller('HomeController', function($scope, $state){
+.controller('HomeController', function($scope, $state, PageState){
     $scope.init = function(){
+        PageState.init();
         $state.go('post.list');
     }
 });

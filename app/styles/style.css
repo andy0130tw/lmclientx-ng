@@ -11,6 +11,11 @@ body {
 	font-size: 1.5em;
 }
 
+.pager {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
 .navbar-brand {
 	color: #FFF !important;
 }
