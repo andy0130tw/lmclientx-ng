@@ -32,7 +32,7 @@ angular.module('app.PostListController', ['app.PostService', 'app.HomePostStorag
     };
 
     $scope.more = function(){
-        $state.go('post', { before: $scope.oldest });
+        $state.go('post.list', { before: $scope.oldest });
     };
 
     $scope.read = function(id){
