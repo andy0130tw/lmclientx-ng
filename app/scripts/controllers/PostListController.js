@@ -11,7 +11,7 @@ angular.module('app.PostListController', ['app.PostService', 'app.HomePostStorag
     $scope.init = function(){
         var config = { count: 15 };
         if($stateParams.page !== null) PageState.currentPage = $stateParams.page;
-        else PageState.currentPage = 0;
+        else PageState.currentPage = '0';
         if(PageState.getId() !== '') config.before = PageState.getId();
         if(PageState.currentPage !== '0'){
             $scope.hasPrevious = true;
