@@ -68,7 +68,7 @@ module.exports = function(grunt){
             }
         },
         
-        watch: {
+        delta: {
             files: [ 'app/**/*' ],
             tasks: [ 'build' ]
         }
@@ -77,6 +77,9 @@ module.exports = function(grunt){
     grunt.initConfig(grunt.util._.extend(init, config));
     
     grunt.registerTask('build', ['clean', 'copy:build_app_js', 'copy:build_vendor_js', 'copy:build_app_tpl', 'concat:build_css', 'index:build']);
+    
+    grunt.renameTask('watch', 'delta');
+    grunt.registerTask('watch', ['build', 'delta']);
     
     function filterCss(files){
         return files.filter(function(file){

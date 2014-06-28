@@ -29,5 +29,7 @@
             </div>
         </div>
     </div>
-    <button class="btn btn-primary" ng-click="back()">返回</button>
+    <div ng-if="moreToLoad" style="text-align: center; padding-top: 10px;">
+        <button class="btn btn-info btn-lg" ng-click="more()">載入更多</button>
+    </div>
 </div>
