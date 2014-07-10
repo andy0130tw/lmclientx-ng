@@ -80,7 +80,7 @@
                 <p class="post-time" am-time-ago="post.date"></p>
             </div>
         </div>
-        <div class="post-content transition-all" ng-if="post.category === '!emotion'">
+        <div class="post-content transition-all" ng-click="read(post.related)" ng-if="post.category === '!emotion'">
             <div class="post-avatar"><img ng-src="{{ users[post.from].avatar }}" /></div>
             <div class="post-info">
                 <p><strong>{{ users[post.from].name }}</strong> 對你的貼文的表情是 <span class="post-highlight">{{ post.message }}</span>！</p>
