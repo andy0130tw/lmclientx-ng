@@ -10,8 +10,10 @@ angular.module('app.PostListController', ['app.PostService', 'app.HomePostStorag
     $scope.hasPrevious = false;
     $scope.init = function(){
         var config = { count: 15 };
-        if($stateParams.page !== null) PageState.currentPage = $stateParams.page;
+        
+        if($stateParams.page !== '') PageState.currentPage = $stateParams.page;
         else PageState.currentPage = '0';
+        
         if(PageState.getId() !== '') config.before = PageState.getId();
         if(PageState.currentPage !== '0'){
             $scope.hasPrevious = true;
@@ -36,6 +38,10 @@ angular.module('app.PostListController', ['app.PostService', 'app.HomePostStorag
             $scope.moreToLoad = more;
         });
     };
+    
+    $scope.onScroll = function(){
+        console.log('hey!');
+    }
     
     $scope.previous = function(){
         if(PageState.currentPage === 0) return;

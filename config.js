@@ -16,8 +16,10 @@ module.exports = {
             'bower_components/angular-moment/angular-moment.js',
             'bower_components/angular-sanitize/angular-sanitize.js',
             'bower_components/angular-ui-router/release/angular-ui-router.js',
+            'bower_components/angular-ui-utils/ui-utils.js',
             'bower_components/ngstorage/ngStorage.js',
-            'bower_components/angular-bootstrap/ui-bootstrap-tpls.js'
+            'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+            'bower_components/jquery/dist/jquery.min.js'
         ],
         css: [
             'bower_components/bootstrap/dist/css/bootstrap.css',

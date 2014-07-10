@@ -1,0 +1,22 @@
+<form class="form-horizontal" role="form" ng-submit="post(share)">
+    <fieldset>
+        <legend>分享給好友</legend>
+        <div class="form-group">
+            <label for="newpost-content" class="col-lg-2 control-label">分享內容</label>
+            <div class="col-lg-9">
+                <textarea id="newpost-content" ng-model="share.content" rows="10" placeholder="分享的內容..." class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="newpost-file" class="col-lg-2 control-label">附加圖片（選擇性）</label>
+            <div class="col-lg-9">
+                <input type="file" id="newpost-file" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-9 col-lg-offset-2">
+                <button class="btn btn-primary">分享出去</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

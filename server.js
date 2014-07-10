@@ -18,6 +18,10 @@ app.get('/api/*', function(req, res){
     api.web(req, res, { target: 'https://apollo.omcompany.com:5443' });
 });
 
+app.post('/api/*', function(req, res){
+    api.web(req, res, { target: 'https://apollo.omcompany.com:5443' });
+});
+
 app.get('/*', function(req, res){
     res.sendfile(path.join(__dirname, 'app', 'index.html'));
 });
