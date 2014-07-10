@@ -46,6 +46,16 @@ module.exports = function(grunt){
                         expand: true
                     }
                 ]
+            },
+            build_vendor_img: {
+                files: [
+                    {
+                        src: ['<%= vendor_files.img %>' ],
+                        dest: '<%= build_dir %>/',
+                        cwd: '.',
+                        expand: true
+                    }
+                ]
             }
         },
         
@@ -76,7 +86,7 @@ module.exports = function(grunt){
     
     grunt.initConfig(grunt.util._.extend(init, config));
     
-    grunt.registerTask('build', ['clean', 'copy:build_app_js', 'copy:build_vendor_js', 'copy:build_app_tpl', 'concat:build_css', 'index:build']);
+    grunt.registerTask('build', ['clean', 'copy:build_app_js', 'copy:build_vendor_js', 'copy:build_vendor_img', 'copy:build_app_tpl', 'concat:build_css', 'index:build']);
     
     grunt.renameTask('watch', 'delta');
     grunt.registerTask('watch', ['build', 'delta']);
