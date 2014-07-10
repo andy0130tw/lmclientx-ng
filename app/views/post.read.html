@@ -1,5 +1,5 @@
 <div ng-init="init()">
-    <div class="post transition-all">
+    <div class="post-without-border transition-all">
         <div class="post-content transition-all">
             <div class="post-avatar"><img ng-src="{{ users[post.from].avatar }}" /></div>
             <div class="post-info">
@@ -11,6 +11,29 @@
             <div class="post-main" ng-bind-html="post.message | markup | autolink"></div>
             <div class="post-image" ng-if="post.image !== ''">
                 <img lm-image="{{ post.image }}" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-default" ng-if="post.category === 'share' || post.category === 'scrapbook'">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="javascript:void(0)" ng-click="formCollapsed = !formCollapsed">回應貼文</a></h3>
+                </div>
+                <div collapse="formCollapsed" class="panel-body">
+                    <form role="form" ng-submit="comment(reply)">
+                        <div class="form-group">
+                            <textarea class="form-control" ng-model="reply.content" rows="5" placeholder="要回應的內容..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="reply-file">上傳圖片（選擇性）：</label>
+                            <input type="file" class="form-control" id="reply-file" ng-model="reply.file">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary">確定送出</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

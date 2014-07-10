@@ -32,6 +32,13 @@ body {
 	margin: 0;
 }
 
+.post-without-border {
+	width: 100%;
+	padding: 2px 0;
+	color: #555;
+	margin: 0;
+}
+
 .post-pointer {
 	cursor: pointer;
 }

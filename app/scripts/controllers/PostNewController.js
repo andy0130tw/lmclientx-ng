@@ -1,6 +1,6 @@
-angular.module('app.PostNewController', ['app.PostService', 'ui.router', 'ui.bootstrap', 'app.Session'])
+angular.module('app.PostNewController', ['app.PostService', 'ui.router', 'ui.bootstrap', 'app.Session', 'app.PageState'])
 
-.controller('PostNewController', function($scope, Session, $http){
+.controller('PostNewController', function($scope, Session, $http, PageState){
     $scope.post = function(share){
         console.log(share);
         console.log(document.getElementById('newpost-file').files[0]);
@@ -15,7 +15,8 @@ angular.module('app.PostNewController', ['app.PostService', 'ui.router', 'ui.boo
             transformRequest: angular.identity,
             headers: { 'Content-Type': undefined }
         }).then(function(resp){
-            console.log(resp);
+            PageState.init();
+            $state.go('post.list', { page: '0' });
         });
     };
 });
