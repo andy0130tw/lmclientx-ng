@@ -8,6 +8,7 @@ angular.module('app.PostListController', ['app.PostService', 'app.HomePostStorag
     $scope.newest = '';
     $scope.moreToLoad = false;
     $scope.hasPrevious = false;
+    
     $scope.init = function(){
         var config = { count: 15 };
         
@@ -32,7 +33,7 @@ angular.module('app.PostListController', ['app.PostService', 'app.HomePostStorag
 
             $scope.users = UserService.procUserImage(user);
             $scope.related = related;
-            $scope.posts = PostService.procPosterName(list, related, user);
+            $scope.posts = PostService.procPostList(list, related, user);
             $scope.oldest = oldest;
             $scope.newest = newest;
             $scope.moreToLoad = more;

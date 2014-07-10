@@ -66,7 +66,7 @@
         <div class="post-content transition-all" ng-if="post.category === 'course' || post.category === 'practice'">
             <div class="post-avatar"><img ng-src="{{ users[post.from].avatar }}" /></div>
             <div class="post-info">
-                <p><strong>{{ users[post.from].name }}</strong> {{ message }}</p>
+                <p><strong>{{ users[post.from].name }}</strong> {{ post.message }}</p>
                 <p class="post-time" am-time-ago="post.date"></p>
             </div>
             <div class="post-image" ng-if="post.image !== ''">
@@ -83,7 +83,7 @@
         <div class="post-content transition-all" ng-if="post.category === '!emotion'">
             <div class="post-avatar"><img ng-src="{{ users[post.from].avatar }}" /></div>
             <div class="post-info">
-                <p><strong>{{ users[post.from].name }}</strong> 對你的貼文的表情是 <span class="post-highlight">{{ message }}</span>！</p>
+                <p><strong>{{ users[post.from].name }}</strong> 對你的貼文的表情是 <span class="post-highlight">{{ post.message }}</span>！</p>
                 <p class="post-time" am-time-ago="post.date"></p>
             </div>
         </div>
